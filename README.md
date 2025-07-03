@@ -71,3 +71,39 @@ send_email "Backup successful"
 ```
 ### some other benefit includes, writence once any reuse any where. eg calling a fucntion inside another function or passing a fucntion as an argument or parameter to another function.
 
+## Function Syntax
+```bash
+function_name() {"\n    # Function body\n    # You can place any commands or logic here\n"}
+
+```
+* function_name: This is th name of the function. You should choose a descriptive that suugest the intent of the function.
+* ()Brackets are usually used to define the function, they can also house the parameters.
+* {} Curly braces wraps the body of the function, inside the curly braces, you define the command or logic that the function executes.
+
+### Lets look at another script with and without functions versions.
+### Script Without function
+```bash
+#!/bin/bash
+
+# Checking the number of arguments
+if [ "$#" -ne 0 ]; then
+    echo "Usage: $0 <environment>"
+    exit 1
+fi
+
+# Accessing the first argument
+ENVIRONMENT=$1
+
+# Acting based on the argument value
+if [ "$ENVIRONMENT" == "local" ]; then
+  echo "Running script for Local Environment..."
+elif [ "$ENVIRONMENT" == "testing" ]; then
+  echo "Running script for Testing Environment..."
+elif [ "$ENVIRONMENT" == "production" ]; then
+  echo "Running script for Production Environment..."
+else
+  echo "Invalid environment specified. Please use 'local', 'testing', or 'production'."
+  exit 2
+fi
+
+```
