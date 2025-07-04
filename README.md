@@ -105,5 +105,41 @@ else
   echo "Invalid environment specified. Please use 'local', 'testing', or 'production'."
   exit 2
 fi
+```
+
+### A refactored version of the script will look like the code below:
+
+```bash
+#!/bin/bash
+
+# Environment variables
+ENVIRONMENT=$1
+
+check_num_of_args() {"\n# Checking the number of arguments\nif [ \"$#\" -ne 0 ]; then\n    echo \"Usage: $0 <environment>\"\n    exit 1\nfi\n"}
+
+activate_infra_environment() {"\n# Acting based on the argument value\nif [ \"$ENVIRONMENT\" == \"local\" ]; then\n  echo \"Running script for Local Environment...\"\nelif [ \"$ENVIRONMENT\" == \"testing\" ]; then\n  echo \"Running script for Testing Environment...\"\nelif [ \"$ENVIRONMENT\" == \"production\" ]; then\n  echo \"Running script for Production Environment...\"\nelse\n  echo \"Invalid environment specified. Please use 'local', 'testing', or 'production'.\"\n  exit 2\nfi\n"}
+
+check_num_of_args
+activate_infra_environment
 
 ```
+### The refactored version is way better than the initial version. It is more readable, structred and very maintainable.
+
+## Calling a Function.
+### A function after creation and implementing commands or tasks you want the function to perform. It does not really perform the tasks defined untill you call the function. Examine the script below.
+```bash
+add() {
+    result=$(( $1 + $2 ))
+    echo "Result: $result"
+}
+
+subtract() {
+    result=$(( $1 - $2 ))
+    echo "Result: $result"
+}
+
+# Function call
+add 5 3       # Output: Result: 8
+subtract 10 4 # Output: Result: 6
+```
+### Function call Demonstration
